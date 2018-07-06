@@ -26,6 +26,7 @@ class Tours(models.Model):
     Photo = ImageField(upload_to="/home/ognen/Downloads/project_name/uploads/images")
     Description = TextField(max_length=2000)
     Duration = IntegerField()
+    locations = models.ManyToManyField(Locations, related_name='tours')
 
     # Relationship Fields
     #Locations = models.ForeignKey('tourist.Locations', )
@@ -58,8 +59,6 @@ class Locations(models.Model):
     Audio = FileField(upload_to="/home/ognen/Downloads/project_name/uploads/audio")
     Description = TextField(max_length=2000)
 
-    # Relationship Fields
-    Tours = models.ForeignKey('tourist.Tours', on_delete=models.CASCADE)
     Photos = models.ForeignKey('tourist.Photos', )
     PlaceLocations = models.ForeignKey('tourist.PlaceLocations', )
 
